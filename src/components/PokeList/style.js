@@ -33,7 +33,23 @@ export const PokeCard = styled.View`
     width:47.3%;
     margin:5px;
     height:130px;
-    border-bottom-color: #46D0A7;
+    border-bottom-color: ${({type}) => 
+        type === 'grass' ? "#48D0B0" : 
+        type === 'fire' ? "#FB6C6C" : 
+        type === 'water' ? "#77BDFE" :
+        type === 'electric' ? '#FFCE4B' : 
+        type === 'bug' ? '#05c46b' : 
+        type === 'poison' ? '#7d5fff' : 
+        type === 'ground' ? '#ffa801' : 
+        type === 'fairy' ? '#ef5777' : 
+        type === 'fighting' ? '#ff793f' : 
+        type === 'psychic' ? '#f53b57' : 
+        type === 'rock' ? '#ffb142' : 
+        type === 'ghost' ? '#3c40c6' : 
+        type === 'ice' ? '#00d8d6' : 
+        type === 'dragon' ? '#4b4b4b' :
+        type === 'dark' ? '#3d3d3d' : 
+        type === 'steal' ? '#4b6584' : '#808e9b'} ;
     border-bottom-width:5px;
     flex-direction:row;
     justify-content:space-between;
@@ -48,6 +64,7 @@ export const PokeTitle = styled.Text`
    color:#616161;
    font-size:15px;
    font-weight:bold;
+   text-transform:capitalize;
     
 `
 
@@ -70,7 +87,23 @@ export const PokeNumber = styled.Text`
 export const TypeText = styled.Text`
     padding:0px;
     margin-bottom:5px;
-    background-color:#46D0A7;
+    background-color:${({type}) => 
+        type === 'grass' ? "#48D0B0" : 
+        type === 'fire' ? "#FB6C6C" : 
+        type === 'water' ? "#77BDFE" :
+        type === 'electric' ? '#FFCE4B' : 
+        type === 'bug' ? '#05c46b' : 
+        type === 'poison' ? '#7d5fff' : 
+        type === 'ground' ? '#ffa801' : 
+        type === 'fairy' ? '#ef5777' : 
+        type === 'fighting' ? '#ff793f' : 
+        type === 'psychic' ? '#f53b57' : 
+        type === 'rock' ? '#ffb142' : 
+        type === 'ghost' ? '#3c40c6' : 
+        type === 'ice' ? '#00d8d6' : 
+        type === 'dragon' ? '#4b4b4b' :
+        type === 'dark' ? '#3d3d3d' : 
+        type === 'steal' ? '#4b6584' : '#808e9b'} ;
     border-radius:20px;
     color:#fff;
     text-align:center;
@@ -78,7 +111,12 @@ export const TypeText = styled.Text`
 `
 
 
-export const PokeImg = styled.Image``
+export const PokeImg = styled.Image.attrs({
+    resizeMode:"contain"
+})`
+    width:76px;
+    height:76px;
+`
 
 export const PokeInfo = styled.View`
     height:100%;

@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useEffect, useState} from "react"
 import {ContainerScroll, Container, Title, PokeCard, PokeTitle, ContentCard, TypeText, Type,PokeImg, PokeNumber, ImgNumber, PokeInfo} from "./style"
 import Bulba from "../../assets/bulba.png"
 import Ivysaur from "../../assets/ivysaur.png"
@@ -11,193 +11,83 @@ import Wartortle from "../../assets/wartortle.png"
 import Blastoise from "../../assets/blastoise.png"
 import Pikachu from "../../assets/pikachu.png"
 
-
-
+import Api from "../../services/api"
 
 
 const PokeList = ()=>{
+    const [pokemons, setPokemons] = useState([])
+
+    useEffect(()=>{
+
+        const listAllPokemons = async ()=>{
+           
+            const fill = []
+
+            try {
+                for (let i = 1; i <=150 ;i++) {
+                    const {data} = await Api.get(i.toString())
+                    fill.push(data)
+                    
+                } 
+                setPokemons(fill) 
+                           
+                
+            } catch (error) {
+                console.error(error)
+            }
+           
+      
+        }
+
+        listAllPokemons()
+     
+
+
+    },[])
+
     return(
+
+
         <Container>
                 <Title>Pokedex</Title>
-                <ContainerScroll>
-                    <ContentCard>
 
-                        <PokeCard>
-                            <PokeInfo>
-                                <PokeTitle>Bulbassaur</PokeTitle>
+                    <ContainerScroll>
+                        <ContentCard >
 
-                                <Type>
-                                    <TypeText>Grass</TypeText>
-                                    <TypeText>Poison</TypeText>
-                                </Type>
-                            </PokeInfo>
+                    {
+                        pokemons.map((pokemon, index)=>(
 
-                            <ImgNumber>
-                                <PokeImg source={Bulba}/>
-                                <PokeNumber>#001</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
+                            <PokeCard key={index} type={pokemon.types[0].type.name}>
+                                <PokeInfo>
+                                        <PokeTitle>{pokemon.name}</PokeTitle>
 
-                        <PokeCard>
-                            <PokeInfo>
-                                <PokeTitle>Ivysaur</PokeTitle>
-                                <Type>
-                                    <TypeText>Grass</TypeText>
-                                    <TypeText>Poison</TypeText>
-                                </Type>
-                            </PokeInfo>
+                                    <Type>
+                                        {
+                                            pokemon.types.map((type , index)=>(
+                                                    
+                                                    <TypeText key={index} type={pokemon.types[0].type.name} >{type.type.name} </TypeText>
 
-                            <ImgNumber>
-                                <PokeImg source={Ivysaur}/>
-                                <PokeNumber>#002</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
+                                            ))
+                                        }
+                                        
+                                    </Type>
+                                </PokeInfo>
 
-                        <PokeCard>
-                            <PokeInfo>
-                                <PokeTitle>Venosaur</PokeTitle>
-                                <Type>
-                                    <TypeText>Grass</TypeText>
-                                    <TypeText>Poison</TypeText>
-                                </Type>
-                            </PokeInfo>
-                            <ImgNumber>
-                                <PokeImg source={Venosaur}/>
-                                <PokeNumber>#003</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
+                                <ImgNumber>
+                                    <PokeImg source={{uri: `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}}/>
+                                    <PokeNumber>#{pokemon.id}</PokeNumber>
+                                </ImgNumber>
+                            
+                            </PokeCard>
 
 
-                        
-                        <PokeCard>
+                        ))
 
-                            <PokeInfo>
-                            <PokeTitle>Charmander</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Fire</TypeText>
-
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Charmander}/>
-                                <PokeNumber>#004</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-
-
-                        <PokeCard>
-
-                            <PokeInfo>
-                            <PokeTitle>Charmeleon</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Fire</TypeText>
-
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Charmeleon}/>
-                                <PokeNumber>#005</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-
-                        <PokeCard>
-
-                            <PokeInfo>
-                            <PokeTitle>Charizard</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Fire</TypeText>
-                                    <TypeText>Flying</TypeText>
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Charizard}/>
-                                <PokeNumber>#006</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-
-                        <PokeCard>
-
-                            <PokeInfo>
-                            <PokeTitle>Squirtle</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Water</TypeText>
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Squirtle}/>
-                                <PokeNumber>#007</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-
-
-                        <PokeCard>
-
-                            <PokeInfo>
-                            <PokeTitle>Wartortle</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Water</TypeText>
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Wartortle}/>
-                                <PokeNumber>#008</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-
-                        <PokeCard>
-
-                            <PokeInfo>
-                            <PokeTitle>Blastoise</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Water</TypeText>
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Blastoise}/>
-                                <PokeNumber>#009</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-
-                        <PokeCard>
-
-                            <PokeInfo>
-                            <PokeTitle>Pikachu</PokeTitle>
-
-                                <Type>
-                                    <TypeText>Electric</TypeText>
-                                </Type>
-                            </PokeInfo>
-
-                            <ImgNumber>
-                                <PokeImg source={Pikachu}/>
-                                <PokeNumber>#010</PokeNumber>
-                            </ImgNumber>
-                         
-                        </PokeCard>
-                   
+                    }
 
                     </ContentCard>
+
+     
                 </ContainerScroll>
         </Container>
     )
