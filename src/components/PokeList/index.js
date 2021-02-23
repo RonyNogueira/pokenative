@@ -1,49 +1,12 @@
 import React,{useEffect, useState} from "react"
 import {ContainerScroll, Container, Title, PokeCard, PokeTitle, ContentCard, TypeText, Type,PokeImg, PokeNumber, ImgNumber, PokeInfo} from "./style"
-import Bulba from "../../assets/bulba.png"
-import Ivysaur from "../../assets/ivysaur.png"
-import Venosaur from "../../assets/venusaur.png"
-import Charmander from "../../assets/charmander.png"
-import Charmeleon from "../../assets/charmeleon.png"
-import Charizard from "../../assets/charizard.png"
-import Squirtle from "../../assets/squirtle.png"
-import Wartortle from "../../assets/wartortle.png"
-import Blastoise from "../../assets/blastoise.png"
-import Pikachu from "../../assets/pikachu.png"
-
+import {FlatList,StyleSheet} from "react-native"
 import Api from "../../services/api"
-
+import Sprites from "../../services/sprites"
+import pokemons from "../../services/pokemons.json"
 
 const PokeList = ()=>{
-    const [pokemons, setPokemons] = useState([])
 
-    useEffect(()=>{
-
-        const listAllPokemons = async ()=>{
-           
-            const fill = []
-
-            try {
-                for (let i = 1; i <=150 ;i++) {
-                    const {data} = await Api.get(i.toString())
-                    fill.push(data)
-                    
-                } 
-                setPokemons(fill) 
-                           
-                
-            } catch (error) {
-                console.error(error)
-            }
-           
-      
-        }
-
-        listAllPokemons()
-     
-
-
-    },[])
 
     return(
 
@@ -51,21 +14,24 @@ const PokeList = ()=>{
         <Container>
                 <Title>Pokedex</Title>
 
-                    <ContainerScroll>
-                        <ContentCard >
+                    <FlatList
+                   
+                        data={pokemons}
+                        initialNumToRender={20}
+                        keyExtractor={(item)=>item.id.toString()}
+                        renderItem={({item}) =>(
+                            <ContentCard >
 
-                    {
-                        pokemons.map((pokemon, index)=>(
+                            <PokeCard  type={item.type[0].toLowerCase()}>
 
-                            <PokeCard key={index} type={pokemon.types[0].type.name}>
                                 <PokeInfo>
-                                        <PokeTitle>{pokemon.name}</PokeTitle>
+                                        <PokeTitle>{item.name.english}</PokeTitle>
 
                                     <Type>
                                         {
-                                            pokemon.types.map((type , index)=>(
+                                            item.type.map((type , index)=>(
                                                     
-                                                    <TypeText key={index} type={pokemon.types[0].type.name} >{type.type.name} </TypeText>
+                                                    <TypeText key={index} type={type.toLowerCase()} >{type} </TypeText>
 
                                             ))
                                         }
@@ -74,7 +40,46 @@ const PokeList = ()=>{
                                 </PokeInfo>
 
                                 <ImgNumber>
-                                    <PokeImg source={{uri: `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}}/>
+                                    <PokeImg source={{
+                                        uri: Sprites+`${item.name.english.toLowerCase()}.png`}}/>
+                                    <PokeNumber>#{item.id}</PokeNumber>
+                                </ImgNumber>
+                            
+                            </PokeCard>
+
+
+                    </ContentCard>
+                        )}
+                    
+                    />
+
+
+
+                        {/* <ContentCard >
+
+                    {
+                        pokemons.slice(0,20).map((pokemon, index)=>(
+
+                            <PokeCard key={index} type={pokemon.type[0].toLowerCase()}>
+
+                                <PokeInfo>
+                                        <PokeTitle>{pokemon.name.english}</PokeTitle>
+
+                                    <Type>
+                                        {
+                                            pokemon.type.map((type , index)=>(
+                                                    
+                                                    <TypeText key={index} type={type.toLowerCase()} >{type} </TypeText>
+
+                                            ))
+                                        }
+                                        
+                                    </Type>
+                                </PokeInfo>
+
+                                <ImgNumber>
+                                    <PokeImg source={{
+                                        uri: Sprites+`${pokemon.name.english.toLowerCase()}.png`}}/>
                                     <PokeNumber>#{pokemon.id}</PokeNumber>
                                 </ImgNumber>
                             
@@ -85,13 +90,16 @@ const PokeList = ()=>{
 
                     }
 
-                    </ContentCard>
+                    </ContentCard> */}
 
      
-                </ContainerScroll>
+             
         </Container>
     )
 }
+
+
+
 
 
 export default PokeList

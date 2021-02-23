@@ -30,12 +30,12 @@ export const Title = styled.Text`
 export const PokeCard = styled.View`
 
     background-color:#fff;
-    width:47.3%;
+    width:100%;
     margin:5px;
     height:130px;
     border-bottom-color: ${({type}) => 
-        type === 'grass' ? "#48D0B0" : 
-        type === 'fire' ? "#FB6C6C" : 
+       type === 'grass' ? "#48D0B0" : 
+        type === 'fire' ? "#fd7d24" : 
         type === 'water' ? "#77BDFE" :
         type === 'electric' ? '#FFCE4B' : 
         type === 'bug' ? '#05c46b' : 
@@ -43,12 +43,13 @@ export const PokeCard = styled.View`
         type === 'ground' ? '#ffa801' : 
         type === 'fairy' ? '#ef5777' : 
         type === 'fighting' ? '#ff793f' : 
-        type === 'psychic' ? '#f53b57' : 
+        type === 'psychic' ? '#f366b9' : 
         type === 'rock' ? '#ffb142' : 
         type === 'ghost' ? '#3c40c6' : 
         type === 'ice' ? '#00d8d6' : 
-        type === 'dragon' ? '#4b4b4b' :
+        type === 'dragon' ? '#f16e57' :
         type === 'dark' ? '#3d3d3d' : 
+        type === 'flying' ? '#3dc7ef' :
         type === 'steal' ? '#4b6584' : '#808e9b'} ;
     border-bottom-width:5px;
     flex-direction:row;
@@ -89,7 +90,7 @@ export const TypeText = styled.Text`
     margin-bottom:5px;
     background-color:${({type}) => 
         type === 'grass' ? "#48D0B0" : 
-        type === 'fire' ? "#FB6C6C" : 
+        type === 'fire' ? "#fd7d24" : 
         type === 'water' ? "#77BDFE" :
         type === 'electric' ? '#FFCE4B' : 
         type === 'bug' ? '#05c46b' : 
@@ -97,12 +98,13 @@ export const TypeText = styled.Text`
         type === 'ground' ? '#ffa801' : 
         type === 'fairy' ? '#ef5777' : 
         type === 'fighting' ? '#ff793f' : 
-        type === 'psychic' ? '#f53b57' : 
+        type === 'psychic' ? '#f366b9' : 
         type === 'rock' ? '#ffb142' : 
         type === 'ghost' ? '#3c40c6' : 
         type === 'ice' ? '#00d8d6' : 
-        type === 'dragon' ? '#4b4b4b' :
+        type === 'dragon' ? '#f16e57' :
         type === 'dark' ? '#3d3d3d' : 
+        type === 'flying' ? '#3dc7ef' :
         type === 'steal' ? '#4b6584' : '#808e9b'} ;
     border-radius:20px;
     color:#fff;
@@ -114,8 +116,8 @@ export const TypeText = styled.Text`
 export const PokeImg = styled.Image.attrs({
     resizeMode:"contain"
 })`
-    width:76px;
-    height:76px;
+    width:100px;
+    height:100px;
 `
 
 export const PokeInfo = styled.View`

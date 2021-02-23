@@ -23,10 +23,12 @@
       "adaptiveIcon": {
         "foregroundImage": "",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.ronyexpo.pokedex"
     },
     "web": {
       "favicon": ""
-    }
+    },
+    "description": ""
   }
 }
