@@ -127,10 +127,15 @@ export const PokeInfo = styled.View`
     
 `
 
-export const ContentCard = styled.View`
+export const ContentCard = styled.TouchableOpacity`
     flex-direction:row;
     flex-wrap:wrap;
     align-items:flex-start;
-    padding-bottom:20px;
+    padding-bottom:0px;
     
+`
+
+export const FlatList = styled.FlatList`
+    
+
 `

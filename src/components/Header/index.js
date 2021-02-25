@@ -1,5 +1,4 @@
 import React from "react"
-
 import {Container,ActionButtom,Pokeball} from "./style"
 import Icon from "react-native-vector-icons/FontAwesome5"
 import pokeImg from "../../assets/pokeball.png"
