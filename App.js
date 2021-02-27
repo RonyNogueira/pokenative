@@ -14,7 +14,7 @@ export default function App() {
   return (
     <>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Status">
+      <Stack.Navigator initialRouteName="Pokedex">
         <Stack.Screen name="PokeDex" component={PokeList} />
         <Stack.Screen name="Status" component={Status}/>
       </Stack.Navigator>

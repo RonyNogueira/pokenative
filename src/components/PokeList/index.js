@@ -13,7 +13,7 @@ const PokeList = ({navigation})=>{
         <Container>
                     <FlatList
                    
-                        data={pokemons}
+                        data={pokemons.slice(1,721)}
                         keyExtractor={(item)=>item.id.toString()}
                         renderItem={({item}) =>(
                             

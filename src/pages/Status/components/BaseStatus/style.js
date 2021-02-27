@@ -2,7 +2,9 @@ import styled from "styled-components"
 
 export const Container = styled.View`
     flex:1;
-    background-color:#f3f3f3;
+    background-color:#fff;
+    padding:15px;
+    
 `
 
 export const Title = styled.Text`
@@ -14,4 +16,18 @@ export const Title = styled.Text`
 export const Text = styled.Text`
     font-size:14px;
     color:#303943;
+    
+    
+
+
 `
+
+export const Stats = styled.View`
+
+    flex-direction:row;
+    justify-content:space-between;
+    margin-bottom:20px;
+    
+
+`
+

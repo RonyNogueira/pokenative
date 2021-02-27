@@ -1,59 +1,140 @@
-import React, {useState} from "react"
-import {Dimensions} from "react-native"
-import {Container, ContanierInfo, Info, InfoType, Title, Number, Type, Img, ContainerDescription} from "./style"
-import Poke from "../../assets/poke.png"
-import {ProgressBarAndroid} from "react-native"
-import { TabView, SceneMap } from 'react-native-tab-view';
+import React, {useState, useEffect} from "react"
+import {Dimensions, ActivityIndicator} from "react-native"
+import {Container, ContanierInfo, Info, InfoType, Title, Number, Type, Img, ContainerDescription, LoadView} from "./style"
+import Poke from "../../assets/1.png"
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import AboutTabView from "./components/About/index"
 import BaseStatusTabView from "./components/BaseStatus/index"
-
+import Evolution from "./components/Evolution/index"
+import Api from "../../services/api"
 
 const initialLayout = { width: Dimensions.get('window').width };
 
 
+
+
 const Status = ({route})=>{
+  const [pokemon, setPokemon] = useState({})
+  const [load, setLoad] = useState(true)
+    
+ useEffect(()=>{
+
+    getPokemon()
+
+},[])
+
+
+ const { itemId } = route.params;
+
+
+    const getPokemon = async ()=>{
+       
+      try {         
+            const {data} = await Api.get(itemId.toString())
+            setPokemon(data)
+            setLoad(false)
+           
+      } catch (error) {
+          
+      }
+  
+    }
+
 
     const [index, setIndex] = useState(0);
     const [routes] = useState([
       { key: 'About', title: 'About' },
       { key: 'BaseStats', title: 'Base Stats' },
-     
+      { key: 'Evolution', title: 'Evolution' },
     ]);
 
-    const renderScene = SceneMap({
-        About: AboutTabView,
-        BaseStats: BaseStatusTabView,
-        
-      });
-    // const { itemId } = route.params;
+
+      const _renderScene = ({route})=>{
+        switch(route.key){
+          case 'About':
+            return pokemon.id ? <AboutTabView id={pokemon.id} /> : <AboutTabView id={1} />;
+            
+          
+          case 'BaseStats': 
+            return pokemon.id ? <BaseStatusTabView id={pokemon.id}/>: <BaseStatusTabView id={1}/>;
+          
+          case 'Evolution': 
+            return <Evolution/>;
+          
+          default : return null
+        }
+      }
+
+      const renderTabBar = props => (
+        <TabBar
+          {...props}
+          indicatorStyle={{ backgroundColor: '#95a5a6' }}
+          style={{ backgroundColor: '#fff', elevation:0}}
+          labelStyle={{fontWeight: "bold"}}
+          activeColor={"#303943"}
+          inactiveColor={"#c3c3c3"}
+        />
+      );
+
+
+   
 
     return(
-        <Container>
-            <ContanierInfo>
-                <Info>
-                    <Title>Bulbasaur</Title>
-                    <Number>#001</Number>
-                </Info>
-                <InfoType>
 
-                    <Type>Grass</Type>
-                    <Type>Grass</Type>
+        <>
+      { load ? <LoadView>
+                  <Title> <ActivityIndicator size={60} color="#fd7d24" /> </Title>
+              </LoadView> :
+         <Container type={pokemon.types ? pokemon.types[0].type.name : "normal"}>
+            {
+               
+                
 
-                </InfoType>
+                    <ContanierInfo>
 
-                <Img source={Poke} />
-            </ContanierInfo>
+                        <Info>
+                            <Title>{pokemon.name} </Title>
+                            <Number>#{pokemon.id} </Number>
+                        </Info>
+                        <InfoType>
+                            {
+                              pokemon.types ? 
+                              pokemon.types.map((type, index)=>(
+
+                                <Type key={index}>{type.type.name} </Type>
+
+
+                              ))
+                              : null
+                            }
+    
+                        </InfoType>
+                          {   pokemon.sprites ?
+                              <Img source={{uri:pokemon.sprites.other['official-artwork'].front_default}} />
+                              : null
+                          }
+                  
+                    </ContanierInfo>
+
+      
+
+            }
 
             <ContainerDescription>
-                <ProgressBarAndroid styleAttr="Horizontal" indeterminate={false} progress={0.5} />
                 <TabView
                     navigationState={{ index, routes }}
-                    renderScene={renderScene}
+                    renderScene={_renderScene}
                     onIndexChange={setIndex}
                     initialLayout={initialLayout}
+                    renderTabBar={renderTabBar}
+                    
+                   
                 />
             </ContainerDescription>
-        </Container>
+        </Container> 
+      }
+        </>
+
     )
 
 

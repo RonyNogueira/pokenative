@@ -29,6 +29,6 @@
     "web": {
       "favicon": "./src/assets/icon.png"
     },
-    "description": "A simple Pokedex"
+    "description": "Pokedex feita para estudos"
   }
 }
