@@ -1,5 +1,5 @@
 
-const Sprites = "https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/"
+const Sprites = "https://img.pokemondb.net/sprites/home/normal/"
    
 
 export default Sprites

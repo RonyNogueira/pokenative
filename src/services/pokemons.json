@@ -4712,7 +4712,7 @@
     {
       "id": 83,
       "name": {
-        "english": "Farfetch'd",
+        "english": "Farfetchd",
         "japanese": "カモネギ",
         "chinese": "大葱鸭",
         "french": "Canarticho"
@@ -6923,7 +6923,7 @@
     {
       "id": 122,
       "name": {
-        "english": "Mr. Mime",
+        "english": "mr-mime",
         "japanese": "バリヤード",
         "chinese": "魔墙人偶",
         "french": "M. Mime"
@@ -24512,7 +24512,7 @@
     {
       "id": 439,
       "name": {
-        "english": "Mime Jr.",
+        "english": "mime-jr",
         "japanese": "マネネ",
         "chinese": "魔尼尼",
         "french": "Mime Jr"
@@ -37184,7 +37184,7 @@
     {
       "id": 669,
       "name": {
-        "english": "Flabébé",
+        "english": "flabebe",
         "japanese": "フラベベ",
         "chinese": "花蓓蓓",
         "french": "Flabébé"
@@ -42826,7 +42826,7 @@
     {
       "id": 772,
       "name": {
-        "english": "Type: Null",
+        "english": "type-null",
         "japanese": "タイプ：ヌル",
         "chinese": "属性：空",
         "french": "Silvallié"
@@ -43496,7 +43496,7 @@
     {
       "id": 785,
       "name": {
-        "english": "Tapu Koko",
+        "english": "Tapu-Koko",
         "japanese": "カプ・コケコ",
         "chinese": "卡璞・鸣鸣",
         "french": "Tokopiyon"
@@ -43546,7 +43546,7 @@
     {
       "id": 786,
       "name": {
-        "english": "Tapu Lele",
+        "english": "Tapu-Lele",
         "japanese": "カプ・テテフ",
         "chinese": "卡璞・蝶蝶",
         "french": "Tokotoro"
@@ -43596,7 +43596,7 @@
     {
       "id": 787,
       "name": {
-        "english": "Tapu Bulu",
+        "english": "Tapu-Bulu",
         "japanese": "カプ・ブルル",
         "chinese": "卡璞・哞哞",
         "french": "Tokopisco"
@@ -43646,7 +43646,7 @@
     {
       "id": 788,
       "name": {
-        "english": "Tapu Fini",
+        "english": "Tapu-Fini",
         "japanese": "カプ・レヒレ",
         "chinese": "卡璞・鳍鳍",
         "french": "Tokopisco"

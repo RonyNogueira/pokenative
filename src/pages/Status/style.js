@@ -47,7 +47,7 @@ export const InfoType = styled.View`
 
 `
 export const Title = styled.Text`
-    font-size:40px;
+    font-size:30px;
     font-weight:bold;
     color:#fff;
     text-transform:capitalize;

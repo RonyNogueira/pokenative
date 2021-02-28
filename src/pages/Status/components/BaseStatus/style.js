@@ -25,9 +25,16 @@ export const Text = styled.Text`
 export const Stats = styled.View`
 
     flex-direction:row;
-    justify-content:space-between;
     margin-bottom:20px;
     
 
 `
 
+export const Number = styled.View`
+        width:30%;
+        flex-direction:row;
+        justify-content:space-between;
+        padding-right:15px;
+        
+        
+`
