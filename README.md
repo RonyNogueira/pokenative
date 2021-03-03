@@ -42,3 +42,6 @@ Com as dependências instaladas, basta executar o comando abaixo
 ```
 expo start
 ```
+
+
+![imagem](./example.gif)
