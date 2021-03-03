@@ -44,4 +44,3 @@ expo start
 ```
 
 
-![imagem](./example.gif)
