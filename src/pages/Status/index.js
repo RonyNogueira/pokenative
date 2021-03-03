@@ -59,7 +59,7 @@ const Status = ({route})=>{
             return pokemon.id ? <BaseStatusTabView id={pokemon.id}/>: <BaseStatusTabView id={1}/>;
           
           case 'Evolution': 
-            return <Evolution/>;
+            return pokemon.id ? <Evolution id={pokemon.id} /> : <Evolution id={1} />;
           
           default : return null
         }
