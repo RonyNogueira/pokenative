@@ -29,6 +29,6 @@
     "web": {
       "favicon": "./src/assets/icon.png"
     },
-    "description": "Pokedex feita para estudos"
+    "description": "Pokedex feita para estudos em React Native "
   }
 }
